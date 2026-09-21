@@ -1,5 +1,6 @@
 /**
- * Authored icon set. Two registers, deliberately kept apart:
+ * Authored icon set — only the marks this card actually draws.
+ * Two registers, deliberately kept apart:
  *   BRAND — solid marks, drawn to each platform's own geometry.
  *   UI    — 24px grid, 1.75 stroke, round caps and joins, no fills.
  * Nothing here is an emoji or a unicode glyph standing in for a drawing.
@@ -15,67 +16,23 @@ const BRAND = {
 };
 
 const UI = {
-  home: ['M3.2 10.6 12 3.4l8.8 7.2', 'M5.4 9.4v10.2a1.2 1.2 0 0 0 1.2 1.2h3.2v-5.4h4.4v5.4h3.2a1.2 1.2 0 0 0 1.2-1.2V9.4'],
-  compass: ['M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z', 'm15.6 8.4-2.2 5-5 2.2 2.2-5 5-2.2Z'],
-  layers: ['m12 3.2 8.6 4.5L12 12.2 3.4 7.7 12 3.2Z', 'm3.4 12.2 8.6 4.5 8.6-4.5', 'm3.4 16.6 8.6 4.5 8.6-4.5'],
-  bolt: ['M13.4 2.6 5.2 13.1h5.5l-.6 8.3 8.2-10.7h-5.5l.6-8.1Z'],
-  quote: ['M20.6 12.1c0 3.9-3.85 7.1-8.6 7.1-.98 0-1.93-.14-2.8-.4l-4.7 1.8 1.5-3.5a6.9 6.9 0 0 1-2.6-5C3.4 8.2 7.25 5 12 5s8.6 3.2 8.6 7.1Z'],
-  send: ['M21.4 2.6 10.6 13.4', 'M21.4 2.6 14.6 21.4l-3.9-8.1-8.1-3.9L21.4 2.6Z'],
-  chart: ['M4.4 20.6V11.2', 'M9.8 20.6V4.6', 'M15.2 20.6v-6.2', 'M20.6 20.6V8.2', 'M2.6 20.6h18.8'],
-  anchor: [
-    'M12 7.6v13.2',
-    'M12 6.3a2.15 2.15 0 1 0 0-4.3 2.15 2.15 0 0 0 0 4.3Z',
-    'M8.4 10.6h7.2',
-    'M3.6 13.4a8.4 8.4 0 0 0 16.8 0',
-    'M3.6 13.4h2.6M20.4 13.4h-2.6',
-  ],
-  clock: ['M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z', 'M12 7.2V12l3.3 2'],
-  users: [
-    'M9.2 11.4a3.7 3.7 0 1 0 0-7.4 3.7 3.7 0 0 0 0 7.4Z',
-    'M2.6 20.6c0-3.6 2.95-6.5 6.6-6.5s6.6 2.9 6.6 6.5',
-    'M16.4 4.5a3.7 3.7 0 0 1 0 6.8',
-    'M17.8 14.5a6.6 6.6 0 0 1 3.6 5.6',
-  ],
-  shield: ['M12 2.8 4.6 6v6.1c0 4.4 3.05 8.1 7.4 9.1 4.35-1 7.4-4.7 7.4-9.1V6L12 2.8Z', 'm8.9 11.9 2.3 2.3 4.2-4.6'],
   arrow: ['M7.4 16.6 16.6 7.4', 'M9 7.4h7.6V15'],
-  plus: ['M12 5.2v13.6', 'M5.2 12h13.6'],
-  copy: [
-    'M9.4 8.6h9a1.6 1.6 0 0 1 1.6 1.6v9a1.6 1.6 0 0 1-1.6 1.6h-9a1.6 1.6 0 0 1-1.6-1.6v-9a1.6 1.6 0 0 1 1.6-1.6Z',
-    'M4.8 15.4a1.6 1.6 0 0 1-1.6-1.6v-9a1.6 1.6 0 0 1 1.6-1.6h9a1.6 1.6 0 0 1 1.6 1.6v.8',
-  ],
-  check: ['m5.2 12.6 4.6 4.6L18.8 7.4'],
-  left: ['M14.6 5.4 8 12l6.6 6.6'],
-  right: ['M9.4 5.4 16 12l-6.6 6.6'],
   pin: ['M12 21.2s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z', 'M12 12.6a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z'],
-  menu: ['M3.6 7.6h16.8', 'M3.6 12h16.8', 'M3.6 16.4h16.8'],
-  close: ['M6 6l12 12', 'M18 6 6 18'],
-  globe: [
-    'M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6Z',
-    'M3.2 12h17.6',
-    'M12 3.2c2.3 2.4 3.5 5.4 3.5 8.8s-1.2 6.4-3.5 8.8c-2.3-2.4-3.5-5.4-3.5-8.8s1.2-6.4 3.5-8.8Z',
-  ],
-  building: ['M4.4 20.8V4.6a1.2 1.2 0 0 1 1.2-1.2h7.6a1.2 1.2 0 0 1 1.2 1.2v16.2', 'M14.4 9.4h4a1.2 1.2 0 0 1 1.2 1.2v10.2', 'M2.8 20.8h18.4', 'M7.8 7.4h2.4M7.8 11h2.4M7.8 14.6h2.4', 'M9 20.8v-2.6'],
-  directions: ['M12 2.9 21.1 12 12 21.1 2.9 12 12 2.9Z', 'M9.2 14.2v-2.4a1.2 1.2 0 0 1 1.2-1.2h4.4', 'm13 8.8 1.8 1.8L13 12.4'],
   phone: ['M8.3 3.4H5.6a1.9 1.9 0 0 0-1.9 2.05C4.4 13.6 10.4 19.6 18.55 20.3a1.9 1.9 0 0 0 2.05-1.9v-2.7a1.4 1.4 0 0 0-1.06-1.36l-3.1-.78a1.4 1.4 0 0 0-1.4.42l-1.02 1.1a12.6 12.6 0 0 1-5.1-5.1l1.1-1.02a1.4 1.4 0 0 0 .42-1.4l-.78-3.1A1.4 1.4 0 0 0 8.3 3.4Z'],
   download: ['M12 3.6v11.6', 'm7.4 10.8 4.6 4.6 4.6-4.6', 'M4.4 16.4v2.4a1.6 1.6 0 0 0 1.6 1.6h12a1.6 1.6 0 0 0 1.6-1.6v-2.4'],
-  mail: ['M4.6 5.4h14.8a1.6 1.6 0 0 1 1.6 1.6v10a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 17V7a1.6 1.6 0 0 1 1.6-1.6Z', 'm3.4 6.4 8.6 6.4 8.6-6.4'],
 };
 
-/** Ring bullet used in the service lists — drawn, not a typographic dot. */
-const RING = ['M12 4.6a7.4 7.4 0 1 1 0 14.8 7.4 7.4 0 0 1 0-14.8Z', 'M12 9.6a2.4 2.4 0 1 1 0 4.8 2.4 2.4 0 0 1 0-4.8Z'];
-
-export default function Icon({ name, size = 20, className, style }) {
-  const brand = BRAND[name];
+export default function Icon({ name, size = 20, className }) {
   const shared = {
     width: size,
     height: size,
     viewBox: '0 0 24 24',
     className,
-    style,
     'aria-hidden': true,
     focusable: false,
   };
 
+  const brand = BRAND[name];
   if (brand) {
     return (
       <svg {...shared} fill="currentColor">
@@ -84,8 +41,7 @@ export default function Icon({ name, size = 20, className, style }) {
     );
   }
 
-  // The company site has no brand mark of its own — it renders as the globe.
-  const paths = name === 'ring' ? RING : UI[name === 'website' ? 'globe' : name];
+  const paths = UI[name];
   if (!paths) return null;
 
   return (

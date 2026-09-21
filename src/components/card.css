@@ -1,0 +1,278 @@
+/* ==================================================================
+   THE CARD — section one. Written for a phone held in one hand: a
+   single column, one action per row, nothing side by side. The desktop
+   view is the same column, centred — a business card stays card-shaped.
+   ================================================================== */
+.card {
+  padding: clamp(2.5rem, 9vh, 4.5rem) var(--gutter) clamp(2.5rem, 7vh, 4rem);
+}
+
+.card__head {
+  margin-bottom: clamp(1.75rem, 5vh, 2.5rem);
+}
+
+.card__name {
+  font-size: clamp(2.1rem, 10.5vw, 3.4rem);
+  margin-bottom: 0.45rem;
+}
+
+.card__role {
+  font-size: var(--t-lead);
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+/* Where he works — the mark carries the company, so the name beside it
+   is set small. It is stated here once and not repeated in the footer. */
+.card__at {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.card__at img {
+  height: 1.6rem;
+  width: auto;
+}
+
+/* ==================================================================
+   THE PAIR — ring him, or keep him. The two actions a scanned card is
+   for, side by side. Each keeps its own minimum width, so on a narrow
+   phone they stack rather than squeezing their labels.
+   ================================================================== */
+.card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.card__actions .btn {
+  flex: 1 1 8.5rem;
+  min-height: 3.4rem;
+  /* Narrower than the default button so two fit a phone's width. */
+  padding-inline: 0.9rem;
+}
+
+/* The number, printed under the pair. Not a control — the card is
+   expected to show it, and tapping Call is what dials it. */
+.card__number {
+  margin-top: 0.85rem;
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+
+/* ==================================================================
+   THE REGISTER HEAD — a ruled label, the way a plate names its columns.
+   Tracked wide and set small: it orders the page without asking to be
+   read. The rule runs to the measure and stops exactly there.
+   ================================================================== */
+.reg {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: clamp(1.6rem, 4.5vh, 2.1rem) 0 0.7rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  /* The index is a count, not prose — keep the figures even. */
+  font-variant-numeric: tabular-nums;
+}
+
+.reg__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--stone-line);
+}
+
+/* ==================================================================
+   ROUTES — Call, WhatsApp, email, LinkedIn. Full-width rows, each at
+   least 56px tall, because the thumb is the only pointing device here.
+   ================================================================== */
+.routes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.route {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 3.75rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--r-md);
+  background: var(--stone-raised);
+  box-shadow: var(--shadow-plate);
+  color: var(--ink);
+  overflow: hidden;
+  transition:
+    transform var(--dur-1) var(--ease),
+    color var(--dur-2) var(--ease),
+    box-shadow var(--dur-2) var(--ease);
+}
+
+/* Each route keeps its own colour, so the list reads as four
+   destinations rather than four identical slabs. */
+.route--phone {
+  --brand: #f5f5f2;
+  --brand-ink: #0b0c1f;
+}
+.route--whatsapp {
+  --brand: #25d366;
+  --brand-ink: #07341a;
+}
+.route--email {
+  --brand: var(--brand-grey);
+  --brand-ink: #fff;
+}
+.route--linkedin {
+  --brand: #0a66c2;
+  --brand-ink: #fff;
+}
+
+/* The colour sweeps in from the left on press or hover. */
+.route::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-2) var(--ease);
+}
+
+.route > * {
+  position: relative;
+  z-index: 1;
+}
+
+.route:active {
+  color: var(--brand-ink);
+  transform: scale(0.985);
+}
+
+.route:active::before {
+  transform: scaleX(1);
+  transition-duration: var(--dur-1);
+}
+
+@media (hover: hover) {
+  .route:hover,
+  .route:focus-visible {
+    color: var(--brand-ink);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .route:hover::before,
+  .route:focus-visible::before {
+    transform: scaleX(1);
+  }
+}
+
+.route__glyph {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  background: var(--stone-sunk);
+  transition: background-color var(--dur-2) var(--ease);
+}
+
+.route:active .route__glyph,
+.route:hover .route__glyph {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.route__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.route__label {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.route__handle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    color var(--dur-2) var(--ease),
+    opacity var(--dur-2) var(--ease);
+}
+
+.route:active .route__handle,
+.route:hover .route__handle,
+.route:focus-visible .route__handle {
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* The entry number, in place of the usual chevron. A row this size is
+   plainly tappable without an arrow pointing at itself, and the figures
+   turn four buttons into a numbered register. */
+.route__index {
+  margin-left: auto;
+  flex: none;
+  align-self: flex-start;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-4);
+  transition:
+    color var(--dur-2) var(--ease),
+    opacity var(--dur-2) var(--ease);
+}
+
+.route:active .route__index,
+.route:hover .route__index {
+  color: inherit;
+  opacity: 0.7;
+}
+
+/* ==================================================================
+   Above phone width the card simply centres. It never grows into a
+   two-column layout — there is not enough on it to fill one.
+   ================================================================== */
+@media (min-width: 40rem) {
+  .card__head,
+  .card__actions,
+  .card__number,
+  .reg,
+  .routes {
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card__head,
+  .card__number {
+    text-align: center;
+  }
+}

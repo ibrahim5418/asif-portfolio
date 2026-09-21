@@ -1,19 +1,19 @@
 /**
  * Single source of truth for every piece of copy and every link on the card.
  * Edit this file to update the site — no component holds content of its own.
+ *
+ * The card is two sections and nothing else: who he is and how to reach him,
+ * then who he works for. Every route below appears exactly once on the page.
  */
 
 /* ------------------------------------------------------------------ *
- *  EMPLOYEE — exact spelling and capitalisation as supplied
+ *  EMPLOYEE — name, role, and where he works
  * ------------------------------------------------------------------ */
 export const person = {
-  /** The large display wordmark (decorative). */
-  wordmark: 'ASIF',
   name: 'Asif bin Hossain',
   givenName: 'Asif',
   familyName: 'bin Hossain',
   role: 'Senior Chartering Manager',
-  location: 'Dubai, United Arab Emirates',
 };
 
 /* ------------------------------------------------------------------ *
@@ -33,25 +33,22 @@ export const email = CONTACT_RAW.email;
 export const linkedin = CONTACT_RAW.linkedin;
 
 /* ------------------------------------------------------------------ *
- *  COMPANY
+ *  COMPANY — where he works.
  *  The description is HILF Shipping's own wording from hilfshipping.com.
  * ------------------------------------------------------------------ */
 export const company = {
-  name: 'HILF Shipping',
+  name: 'HILF Shipping LLC FZ',
   site: 'https://hilfshipping.com/',
   siteLabel: 'hilfshipping.com',
-  kicker: 'Dry bulk ship operator · Dubai, UAE',
   tagline: 'Dry bulk chartering with ethical global execution.',
   intro:
     'HILF Shipping supports the worldwide movement of dry bulk commodities through voyage charter, time charter and commercial management services.',
 };
 
 /* ------------------------------------------------------------------ *
- *  OFFICE ADDRESS — shown in the footer and saved into the vCard.
- *  As listed on Google Maps for "HILF Shipping LLC FZ".
+ *  OFFICE — one location, no directions button. The address block is
+ *  itself the link to the listing on Google Maps.
  * ------------------------------------------------------------------ */
-const OFFICE_QUERY = 'HILF Shipping LLC FZ, Tamani Arts Building, Al Asayel St, Business Bay, Dubai';
-
 export const office = {
   label: 'HILF Shipping LLC FZ',
   lines: ['Tamani Arts Building', 'Al Asayel St, Business Bay', 'Dubai, United Arab Emirates'],
@@ -59,28 +56,25 @@ export const office = {
   street: 'Tamani Arts Building, Al Asayel St, Business Bay',
   city: 'Dubai',
   country: 'United Arab Emirates',
-  /** Opens the office's own Google Maps listing (its place ID). */
+  /** The office's own Google Maps listing (its place ID). */
   map: 'https://maps.google.com/?cid=12299312600407320269',
-  /** Opens Google Maps with a route from the visitor to the office. */
-  directions: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(OFFICE_QUERY)}`,
 };
 
 /* ------------------------------------------------------------------ *
- *  CONTACT ROUTES — rendered as buttons in the hero, the footer and
- *  the mobile bar. Order is the order they appear.
+ *  CONTACT ROUTES — one button each, rendered in one place.
+ *  Order is the order they appear, and the order they are most used.
+ *
+ *  Call and Save contact are not in this list: they are the two actions
+ *  a scanned card is for, so they sit at the top of the card as a pair.
+ *  `handle` is the second line under the label.
  * ------------------------------------------------------------------ */
-export const socials = [
+export const routes = [
   {
     id: 'whatsapp',
     label: 'WhatsApp',
-    handle: phoneDisplay,
+    handle: 'Message directly',
     href: `https://wa.me/${CONTACT_RAW.whatsapp}`,
-  },
-  {
-    id: 'linkedin',
-    label: 'LinkedIn',
-    handle: '/in/asifbh',
-    href: CONTACT_RAW.linkedin,
+    external: true,
   },
   {
     id: 'email',
@@ -89,15 +83,10 @@ export const socials = [
     href: `mailto:${CONTACT_RAW.email}`,
   },
   {
-    id: 'website',
-    label: 'HILF Shipping',
-    short: 'Website',
-    handle: company.siteLabel,
-    href: company.site,
+    id: 'linkedin',
+    label: 'LinkedIn',
+    handle: '/in/asifbh',
+    href: CONTACT_RAW.linkedin,
+    external: true,
   },
-];
-
-export const stats = [
-  { value: '9+', label: ['Years in', 'dry bulk'] },
-  { value: '13', label: ['Dry bulk', 'cargoes'] },
 ];
