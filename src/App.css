@@ -1,17 +1,45 @@
 /* ==================================================================
-   SHELL
+   SHELL — two sections and a line of small print, stacked. No sticky
+   bar, no rail: on a phone the whole card is one screen-and-a-bit of
+   scrolling, and every route is already in it.
    ================================================================== */
 .shell {
   display: flow-root;
 }
 
-.section {
-  padding: var(--section-y) var(--gutter);
+.shell section {
   scroll-margin-top: 1rem;
 }
 
-.section:focus-visible,
-.ct:focus-visible,
-.hero:focus-visible {
+.shell section:focus-visible {
   outline: none;
+}
+
+/* Sections rise in as they arrive. useReveal() in src/lib/motion.js adds
+   data-shown the moment the section intersects — or straight away if the
+   visitor has asked for no motion. */
+[data-reveal]:not([data-shown]) {
+  opacity: 0;
+}
+
+[data-reveal][data-shown] {
+  animation: section-in 0.7s var(--ease) both;
+}
+
+@keyframes section-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.foot {
+  padding: 0 var(--gutter) max(1.5rem, env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--ink-3);
 }
